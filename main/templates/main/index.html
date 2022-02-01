@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <title>CRUD Project</title>
+  </head>
+  <body>
+    <h1 class="title is-2">Welcome to the CRUD Project</h1>
+    {% for post in data %}
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">{{post.title}}</p>
+        <button class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </header>
+      <div class="card-content">
+        <div class="content">{{post.content}}</div>
+      </div>
+      <footer class="card-footer">
+        <a href="{% url 'main:read' post.id %}" class="card-footer-item"
+          >Read</a
+        >
+        <a href="{% url 'main:update' post.id %}" class="card-footer-item"
+          >Update</a
+        >
+        <a href="{% url 'main:delete' post.id %}" class="card-footer-item"
+          >Delete</a
+        >
+      </footer>
+    </div>
+    {% endfor %}
+  </body>
+</html>
